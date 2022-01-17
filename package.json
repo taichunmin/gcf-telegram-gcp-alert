@@ -1,0 +1,28 @@
+{
+  "name": "gcf-telegram-gcp-alert",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "dayjs": "^1.10.7",
+    "json5": "^2.2.0",
+    "lodash": "^4.17.21"
+  },
+  "devDependencies": {
+    "@google-cloud/functions-framework": "^2.1.0",
+    "eslint": "^8.7.0",
+    "eslint-config-standard": "^16.0.3",
+    "eslint-plugin-import": "^2.25.4",
+    "eslint-plugin-node": "^11.1.0",
+    "eslint-plugin-promise": "^6.0.0",
+    "jest": "^27.4.7"
+  },
+  "scripts": {
+    "deploy": "gcloud functions deploy gcf-telegram-gcp-alert --allow-unauthenticated --entry-point=main --env-vars-file=.env.yaml --max-instances=1 --memory=128MB --no-user-output-enabled --region=us-central1 --runtime=nodejs14 --timeout=60s --trigger-http",
+    "lint": "eslint --ext .js --fix .",
+    "start": "functions-framework --port=3000 --target=main --signature-type=http",
+    "test": "jest",
+    "repl": "node --experimental-repl-await repl.js"
+  }
+}
